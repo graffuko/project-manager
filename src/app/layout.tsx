@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Sidenav from "@/components/sidenav/sidenav";
 import Header from "@/components/sidenav/header/header";
+import { NextAuthProvider } from "@/components/sidenav/nextauthprovider/nextauthprovider";
 
 
 export const metadata: Metadata = {
@@ -17,9 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Sidenav />
-        <Header />
-        <main className='ml-64 py-20 px-6'>{children}</main>
+        <NextAuthProvider>
+          <main className='ml-64 py-20 px-6'>
+          <Sidenav />
+          <Header />
+          {children}
+          </main>
+        </NextAuthProvider>
       </body>
     </html>
   );
