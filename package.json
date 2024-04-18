@@ -11,7 +11,11 @@
   "dependencies": {
     "@auth/prisma-adapter": "^1.6.0",
     "@prisma/client": "^5.12.1",
-    "next": "14.2.1",
+    "axios": "^1.6.8",
+    "date": "^2.0.5",
+    "date-fns": "^3.6.0",
+    "fns": "^1.0.0",
+    "next": "^14.3.0-canary.9",
     "next-auth": "^4.24.7",
     "prisma": "^5.12.1",
     "react": "^18.2.0",

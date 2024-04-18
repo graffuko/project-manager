@@ -17,7 +17,21 @@ export const authOptions: NextAuthOptions = {
     adapter: PrismaAdapter(prisma) as Adapter,
     debug: process.env.NODE_ENV === 'development',
     secret: process.env.NEXTAUTH_SECRET,
-    callbacks: {},
+    callbacks: {
+        session: async ({ session, token }) => {
+            const userEmail = token.email;
+            const user = await prisma.user.findUnique({
+                where: { email: userEmail as string },
+            });
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    id: user?.id,
+                },
+            };
+        },
+    },
 };
 
 
